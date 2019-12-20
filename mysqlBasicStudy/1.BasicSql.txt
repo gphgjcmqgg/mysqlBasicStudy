@@ -1,0 +1,35 @@
+#基础查询
+
+#语法
+select 查询列表 from 表名
+
+select * from 表名;
+select 字段 from 表名;
+select 100;
+select 'john';
+select 100%98 AS 别名;
+select 100%98 别名;
+select VERSION();
+
+-- 去重
+select DISTINCT 字段 form 表名;
+
+# +号作用 
+mysql中+号只能用来做运算符
+select 100+90;
+select '123'+90       -- 字符装换,成功进行运算，失败为0
+
+-- concat用来连接字符串
+select concat('a','b')
+null和任何字符串进行拼接 就是null
+
+--desc显示表结构
+desc 表名
+
+-- IFNULL
+IFNULL(字段，默认值)
+
+--条件查询
+select 字段 FROM 表 where 筛选条件
+
+
