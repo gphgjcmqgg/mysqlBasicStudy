@@ -26,10 +26,53 @@ null和任何字符串进行拼接 就是null
 --desc显示表结构
 desc 表名
 
--- IFNULL
+-- IFNULL  
 IFNULL(字段，默认值)
+
+-- ISNULL   是null返回true，否则返回false
+ISNULL(字段)
 
 --条件查询
 select 字段 FROM 表 where 筛选条件
 
+
+--模糊查询
+查询某字段中第二个字符为 _的员工
+select * from 表名
+where 字段 like '_\_%'
+
+select * from 表名
+where 字段 like '_$_%' ESCAPE '$';   --主动标明转义
+
+
+-- in 关键字
+select * from 表名
+where 字段 in (条件1，条件2，...)
+
+-- is null
+is null 用来判断字段是否为Null
+
+-- 安全等于： <=>   既可以判断null还可以比较普通数值
+
+-- 排序查询 order by desc|asc  默认asc
+
+--取得字符长度LENGTH(字段)
+
+--常见函数
+select 函数名(实参列表) 【from 表】;
+1.单行函数
+    如：concat,length,ifnull,isnull
+    
+    1）字符函数
+        #  length      -> 获取参数值的字节个数
+        #  concat      -> 用来拼接字符串
+        #  upper,lower -> 大小写转换
+        #  substr      -> 字符串截取 索引从1开始
+        #  instr       -> 返回子串第一次出现的索引，如果找不到返回0
+        #  trim        -> 去前后两边空格
+        select trim('a' from 'aaaaa武aaaaa当aaaaaaa')   --- 去除前后两边指定字符
+        # lpad         -> 用指定的字符实现左填充指定长度
+        select lpad('高数', 10,'A')
+2.分组函数
+    功能：做统计使用，又称为统计函数、聚合函数、组函数
 
