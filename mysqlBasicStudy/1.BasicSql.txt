@@ -1,8 +1,8 @@
-#基础查询
+# 基础查询
 
-#语法
-select 查询列表 from 表名
+## 语法
 
+select 查询列表 from 表名;
 select * from 表名;
 select 字段 from 表名;
 select 100;
@@ -11,35 +11,39 @@ select 100%98 AS 别名;
 select 100%98 别名;
 select VERSION();
 
--- 去重
+## 去重
 select DISTINCT 字段 form 表名;
 
-# +号作用 
-mysql中+号只能用来做运算符
-select 100+90;
-select '123'+90       -- 字符装换,成功进行运算，失败为0
+## +号作用
 
--- concat用来连接字符串
-select concat('a','b')
+mysql中+号, 只能用来做运算符
+select 100+90;
+select '123'+90        result   213    -- 数值装换,成功进行运算，失败为0
+select 'john'+90       result   90     -- 数值装换,成功进行运算，失败为0
+select null + 90       result   null   -- 和null相加结果是null
+## concat用来连接字符串
+select concat('a','b','c')
 null和任何字符串进行拼接 就是null
 
---desc显示表结构
+## desc显示表结构
 desc 表名
 
--- IFNULL  
+## IFNULL  判断是否为空，如果是null就给默认值
 IFNULL(字段，默认值)
 
--- ISNULL   是null返回true，否则返回false
+## ISNULL   是null返回true，否则返回false
 ISNULL(字段)
 
---条件查询
+## 条件查询
 select 字段 FROM 表 where 筛选条件
 
+and or not
+< <= <> >= > 
 
---模糊查询
+## 模糊查询
 查询某字段中第二个字符为 _的员工
 select * from 表名
-where 字段 like '_\_%'
+where 字段 like '_\_%'          \  转移字符
 
 select * from 表名
 where 字段 like '_$_%' ESCAPE '$';   --主动标明转义
@@ -58,11 +62,10 @@ is null 用来判断字段是否为Null
 
 --取得字符长度LENGTH(字段)
 
---常见函数
+## 常见函数
 select 函数名(实参列表) 【from 表】;
 1.单行函数
     如：concat,length,ifnull,isnull
-    
     1）字符函数
         #  length      -> 获取参数值的字节个数
         #  concat      -> 用来拼接字符串
@@ -73,6 +76,7 @@ select 函数名(实参列表) 【from 表】;
         select trim('a' from 'aaaaa武aaaaa当aaaaaaa')   --- 去除前后两边指定字符
         # lpad         -> 用指定的字符实现左填充指定长度
         select lpad('高数', 10,'A')
+        
 2.分组函数
     功能：做统计使用，又称为统计函数、聚合函数、组函数
 
