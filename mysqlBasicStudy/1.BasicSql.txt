@@ -61,10 +61,12 @@ is null 用来判断字段是否为Null
 ## 排序查询 order by desc|asc  默认asc
 
 --取得字符长度LENGTH(字段)
+--SHOW VARIABLES LIKE '%char%'      --显示字符集编码
 
 ## 常见函数
 select 函数名(实参列表) 【from 表】;
-1.单行函数
+
+1. 单行函数
     如：concat,length,ifnull,isnull
     1）字符函数
         #  length      -> 获取参数值的字节个数
@@ -74,9 +76,47 @@ select 函数名(实参列表) 【from 表】;
         #  instr       -> 返回子串第一次出现的索引，如果找不到返回0
         #  trim        -> 去前后两边空格
         select trim('a' from 'aaaaa武aaaaa当aaaaaaa')   --- 去除前后两边指定字符
-        # lpad         -> 用指定的字符实现左填充指定长度
+        # lpad,rpad    -> 用指定的字符实现左(右)填充指定长度
         select lpad('高数', 10,'A')
+        #  replace     -> 指定字符替换
+    2）数字函数
+        # round        -> 四舍五入
+        # ceil         -> 向上取整，返回>=该参数的最小整数
+        # floor        -> 向下取整，返回<=该参数的最大整数
+        # truncate     -> 截断
+        # mod          -> 取余  a-a/b*b
+    3）日期函数
+        # now          -> 返回当前系统日期+时间
+        # curdate      -> 返回当前系统日期
+        # curtime      -> 返回当前系统时间
+        # year,month,monthname,day,hour,minute,second
+        # str_to_date  -> 将日期格式的字符转成日期
+        # date_format  -> 日期转换成字符
+    4）其他函数
+        # VERSION
+        # database
+        # user
+2. 流程控制函数
+        # if函数       ->if else 效果
+        # case         ->
+            case 要判断的字段或者表达式
+            when 常量1 then 要显示的值或者语句
+            when 常量2 then 要显示的值或者语句
+            else 要显示的值或者语句
+            end
 
-2.分组函数
+            case 
+            when 条件1 then 要显示的值或者语句
+            when 条件2 then 要显示的值或者语句
+            else 要显示的值或者语句
+            end
+3. 分组函数
     功能：做统计使用，又称为统计函数、聚合函数、组函数
-
+        所有分组函数都忽略null值
+        # sum       sum和distinct搭配，去重后再求和
+        # avg
+        # max
+        # min
+        # count
+            对于count(*)而言，只要有记录，就被纳入统计
+            对于count(字段)，如果该字段的值为null，则不会纳入统计
